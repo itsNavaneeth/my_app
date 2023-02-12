@@ -1,0 +1,130 @@
+{
+  "ideas": [
+    {
+      "team_name": "Sentinels",
+      "id": 1,
+      "idea_name": "GreenGo",
+      "idea_desc": "An app that helps users find eco-friendly transportation options, such as carpooling, biking, or using public transit. The app also provides information on the carbon footprint of each mode of transportation.",
+      "categories": [
+        "Transportation",
+        "Environment",
+        "Sustainability"
+      ],
+      "upvotes": 35
+    },
+    {
+      "team_name": "OpTic",
+      "id": 2,
+      "idea_name": "FoodSaver",
+      "idea_desc": "A platform that connects local grocery stores with customers to reduce food waste by offering surplus food items at a discounted price.",
+      "categories": [
+        "Food",
+        "Waste Reduction",
+        "Sustainability"
+      ],
+      "upvotes": 45
+    },
+    {
+      "team_name": "Fnatic",
+      "id": 3,
+      "idea_name": "Virtual Volunteer",
+      "idea_desc": "A virtual reality platform that allows individuals to volunteer and experience different cultures and communities from the comfort of their own home.",
+      "categories": [
+        "Virtual Reality",
+        "Volunteering",
+        "Cultural Exchange"
+      ],
+      "upvotes": 25
+    },
+    {
+      "team_name": "Acend",
+      "id": 4,
+      "idea_name": "EdTechX",
+      "idea_desc": "An educational technology platform that integrates virtual reality, gamification, and artificial intelligence to enhance the learning experience for students.",
+      "categories": [
+        "Education",
+        "Technology",
+        "Virtual Reality"
+      ],
+      "upvotes": 30
+    },
+    {
+      "team_name": "Cloud 9",
+      "id": 5,
+      "idea_name": "WasteWise",
+      "idea_desc": "An app that helps households track and reduce their waste by providing personalized recommendations on how to recycle and compost more effectively.",
+      "categories": [
+        "Waste Reduction",
+        "Environment",
+        "Sustainability"
+      ],
+      "upvotes": 40
+    },
+    {
+      "team_name": "100 Thieves",
+      "id": 6,
+      "idea_name": "SafeHaven",
+      "idea_desc": "A platform that connects local shelters with volunteers to provide temporary housing for homeless individuals and families.",
+      "categories": [
+        "Homelessness",
+        "Volunteering",
+        "Social Impact"
+      ],
+      "upvotes": 50
+    },
+    {
+      "team_name": "Team Liquid",
+      "id": 7,
+      "idea_name": "MindMate",
+      "idea_desc": "A mental health app that uses artificial intelligence and gamification to engage users in activities and exercises that promote well-being and stress relief.",
+      "categories": [
+        "Mental Health",
+        "Technology",
+        "Wellness"
+      ],
+      "upvotes": 60
+    },
+    {
+      "team_name": "Paper Rex",
+      "id": 8,
+      "idea_name": "GrowTogether",
+      "idea_desc": "A community-based gardening platform that connects local gardeners and promotes sustainable agriculture by sharing resources and knowledge.",
+      "categories": [
+        "Agriculture",
+        "Community",
+        "Sustainability"
+      ],
+      "upvotes": 25
+    },
+    {
+      "team_name": "TSM",
+      "id": 9,
+      "idea_name": "EcoMate",
+      "idea_desc": "An app that helps individuals track their carbon footprint and provides personalized recommendations on how to live a more environmentally friendly lifestyle.",
+      "categories": [
+        "Environment",
+        "Sustainability",
+        "Personal Development"
+      ],
+      "upvotes": 35
+    },
+    {
+      "team_name": "LOUD",
+      "id": 10,
+      "idea_name": "EduPlay",
+      "idea_desc": "An educational gaming platform that incorporates science, technology, engineering, and mathematics (STEM) subjects into fun and interactive games for children.",
+      "categories": [
+        "Education",
+        "Gaming",
+        "STEM"
+      ],
+      "upvotes": 40
+    },
+    {
+      "name": "abcd",
+      "description": "ef",
+      "categories": "sustainability",
+      "id": 11
+    }
+  ]
+}

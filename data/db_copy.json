@@ -1,0 +1,52 @@
+{
+  "blogs": [
+      {
+          "title": "My new website",
+          "body": "Lorem ipsum...",
+          "author": "mario",
+          "id": 1
+      },
+      {
+          "title": "Welcome party!",
+          "body": "Lorem ipsum...",
+          "author": "luigi",
+          "id": 2
+      },
+      {
+          "title": "Come fly with me",
+          "body": "Lorem ipsum...",
+          "author": "mario",
+          "id": 3
+      },
+      {
+          "title": "The incident",
+          "body": "Lorem ipsum...",
+          "author": "luigi",
+          "id": 4
+      },
+      {
+          "title": "Coal digger",
+          "body": "Lorem ipsum...",
+          "author": "mario",
+          "id": 5
+      },
+      {
+          "title": "Run for your wife",
+          "body": "Lorem ipsum...",
+          "author": "luigi",
+          "id": 6
+      },
+      {
+          "title": "Fizbo",
+          "body": "Lorem ipsum...",
+          "author": "mario",
+          "id": 7
+      },
+      {
+          "title": "Great expectations",
+          "body": "Lorem ipsum...",
+          "author": "luigi",
+          "id": 8
+      }
+  ]
+}
