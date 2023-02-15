@@ -5,7 +5,7 @@
       "id": 1,
       "idea_name": "GreenGo",
       "idea_desc": "An app that helps users find eco-friendly transportation options, such as carpooling, biking, or using public transit. The app also provides information on the carbon footprint of each mode of transportation.",
-      "categories": "Sustainability",
+      "category": "Sustainability",
       "upvotes": 35
     },
     {
@@ -13,7 +13,7 @@
       "id": 2,
       "idea_name": "FoodSaver",
       "idea_desc": "A platform that connects local grocery stores with customers to reduce food waste by offering surplus food items at a discounted price.",
-      "categories": "Waste Reduction",
+      "category": "Waste Reduction",
       "upvotes": 45
     },
     {
@@ -21,7 +21,7 @@
       "id": 3,
       "idea_name": "Virtual Volunteer",
       "idea_desc": "A virtual reality platform that allows individuals to volunteer and experience different cultures and communities from the comfort of their own home.",
-      "categories": "Virtual Reality",
+      "category": "Virtual Reality",
       "upvotes": 25
     },
     {
@@ -29,7 +29,7 @@
       "id": 4,
       "idea_name": "EdTechX",
       "idea_desc": "An educational technology platform that integrates virtual reality, gamification, and artificial intelligence to enhance the learning experience for students.",
-      "categories": "Education",
+      "category": "Education",
       "upvotes": 30
     },
     {
@@ -37,7 +37,7 @@
       "id": 5,
       "idea_name": "WasteWise",
       "idea_desc": "An app that helps households track and reduce their waste by providing personalized recommendations on how to recycle and compost more effectively.",
-      "categories": "Waste Reduction",
+      "category": "Waste Reduction",
       "upvotes": 40
     },
     {
@@ -45,7 +45,7 @@
       "id": 6,
       "idea_name": "SafeHaven",
       "idea_desc": "A platform that connects local shelters with volunteers to provide temporary housing for homeless individuals and families.",
-      "categories": "Social Impact",
+      "category": "Social Impact",
       "upvotes": 50
     },
     {
@@ -53,7 +53,7 @@
       "id": 7,
       "idea_name": "MindMate",
       "idea_desc": "A mental health app that uses artificial intelligence and gamification to engage users in activities and exercises that promote well-being and stress relief.",
-      "categories": "Mental Health",
+      "category": "Mental Health",
       "upvotes": 60
     },
     {
@@ -61,7 +61,7 @@
       "id": 8,
       "idea_name": "GrowTogether",
       "idea_desc": "A community-based gardening platform that connects local gardeners and promotes sustainable agriculture by sharing resources and knowledge.",
-      "categories": "Agriculture",
+      "category": "Agriculture",
       "upvotes": 25
     },
     {
@@ -69,7 +69,7 @@
       "id": 9,
       "idea_name": "EcoMate",
       "idea_desc": "An app that helps individuals track their carbon footprint and provides personalized recommendations on how to live a more environmentally friendly lifestyle.",
-      "categories": "Sustainability",
+      "category": "Sustainability",
       "upvotes": 35
     },
     {
@@ -77,14 +77,14 @@
       "id": 10,
       "idea_name": "EduPlay",
       "idea_desc": "An educational gaming platform that incorporates science, technology, engineering, and mathematics (STEM) subjects into fun and interactive games for children.",
-      "categories": "Education",
+      "category": "Education",
       "upvotes": 40
     },
     {
       "team_name": "Sentinels",
       "idea_name": "Smart City",
       "idea_desc": "Here we create an IOT enabled smart city",
-      "categories": "Social Impact",
+      "category": "Social Impact",
       "upvotes": 69,
       "id": 11
     },
@@ -92,9 +92,41 @@
       "team_name": "Sentinels",
       "idea_name": "Face Detection",
       "idea_desc": "Face detection in classrooms for attendance",
-      "categories": "other",
+      "category": "other",
       "upvotes": 69,
       "id": 12
+    },
+    {
+      "team_name": "Sentinels",
+      "idea_name": "ed",
+      "idea_desc": "de",
+      "category": "Social Impact",
+      "upvotes": 69,
+      "id": 13
+    },
+    {
+      "team_name": "Sentinels",
+      "idea_name": "New idea",
+      "idea_desc": "This is a new idea",
+      "category": "Education",
+      "upvotes": 69,
+      "id": 14
+    },
+    {
+      "team_name": "Sentinels",
+      "idea_name": "Quantumania",
+      "idea_desc": "Random Description about Quantumania.",
+      "category": "Virtual Reality",
+      "upvotes": 69,
+      "id": 15
+    },
+    {
+      "team_name": "Sentinels",
+      "idea_name": "Decentralized IPFS",
+      "idea_desc": "description of the project",
+      "category": "Virtual Reality",
+      "upvotes": 69,
+      "id": 16
     }
   ]
 }
