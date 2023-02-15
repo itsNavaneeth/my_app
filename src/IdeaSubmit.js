@@ -3,6 +3,7 @@ import { Avatar, Box, Button, Checkbox, Container, CssBaseline, Divider, FormCon
 import { deepOrange } from "@mui/material/colors";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function stringToColor(string) {
     let hash = 0;
@@ -49,19 +50,37 @@ const IdeaSubmit = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const idea = { team_name, idea_name, idea_desc, category, upvotes };
 
-        fetch('http://localhost:8000/ideas', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(idea)
-        }).then(() => {
-            // console.log("New blog added");
+        // const idea = { team_name, idea_name, idea_desc, category, upvotes };
+
+        // fetch('http://localhost:8000/ideas', {
+        //     method: 'POST',
+        //     headers: {
+        //         'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify(idea)
+        // }).then(() => {
+        //     // console.log("New blog added");
+        //     navigate('/ideas');
+        // })
+
+        const idea = { ideaTitle: idea_name, ideaDescription: idea_desc, cat1: category, upvote: 0, shortlist: 0 }
+        axios.post('http://192.168.71.184:8080/api/v1/idea/addIdea', idea).then(() => {
+            console.log("idea submission");
             navigate('/ideas');
-        })
+
+        });
+
+
     }
+
+    const resetForm = (event) => {
+        setIdeaName("");
+        setIdeaDesc("");
+        setCategory("Other");
+    }
+
+
     return (
         <>
             {/* <div className="create">
@@ -288,6 +307,7 @@ const IdeaSubmit = () => {
                                         fullWidth
                                         variant="outlined"
                                         sx={{ mt: 3, mb: 2 }}
+                                        onClick={() => resetForm()}
                                     >
                                         Clear Form
                                     </Button>

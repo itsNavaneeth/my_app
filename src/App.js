@@ -7,6 +7,7 @@ import NotFound from './NotFound';
 import IdeaSubmit from './IdeaSubmit';
 import IdeaDetails from './IdeaDetails';
 import Practice from './Practice';
+import IdeaList2 from './IdeaList_copy';
 function App() {
   return (
     <Router>
@@ -19,6 +20,8 @@ function App() {
             <Route exact path='/submit' element={<IdeaSubmit />} />
             {/* <Route path='*' element={<NotFound />} /> */}
             <Route path='*' element={<Practice />} />
+            <Route path='/list2' element={<IdeaList2 />} />
+
           </Routes>
         </Box>
 

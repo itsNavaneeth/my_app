@@ -2,9 +2,12 @@ import { Bookmark, BookmarkBorder, CenterFocusStrongTwoTone, Favorite, FavoriteB
 import { Checkbox, Paper, Box, Button, Typography, AppBar, Card, CardActions, CardContent, CardMedia, CssBaseline, Grid, Toolbar, Container } from "@mui/material";
 import { Link } from "react-router-dom";
 
-
+import { useParams } from "react-router-dom";
+import useFetch from "./useFetch";
 
 const Practice = () => {
+    const { id } = useParams();
+    const { data: idea, isLoading, error } = useFetch('http://192.168.71.184:8080/api/v1/idea/107');
     return (
         <>
             <Box component="main" sx={{ p: 3 }}>
@@ -43,6 +46,39 @@ const Practice = () => {
                     Voluptates perspiciatis, in pariatur impedit, nam facilis libero dolorem
                     dolores sunt inventore perferendis, aut sapiente modi nesciunt.
                 </Typography>
+
+                {
+                    idea && (
+                        <Box sx={{ mt: 3 }}>
+                            <Typography>
+                                ID: {idea.ideaId}
+                            </Typography>
+
+                            <Typography>
+                                Title: {idea.ideaTitle}
+                            </Typography>
+
+                            <Typography>
+                                Desc: {idea.ideaDescription}
+                            </Typography>
+
+                            <Typography>
+                                Upvotes: {idea.upvote}
+                            </Typography>
+
+                            <Typography>
+                                Shortlist: {idea.shortlist}
+                            </Typography>
+
+                            <Typography>
+                                Category: {idea.cat1}
+                            </Typography>
+                        </Box>
+
+
+
+                    )
+                }
             </Box>
 
 

@@ -4,7 +4,7 @@ import useFetch from "./useFetch";
 
 const Home = () => {
 
-    const { data: ideas, isLoading, error } = useFetch('http://localhost:8000/ideas');
+    const { data: ideas, isLoading, error } = useFetch('http://192.168.71.184:8080/api/v1/idea/getIdea');
 
     return (
         <>
