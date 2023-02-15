@@ -18,7 +18,7 @@ const IdeaDetails = () => {
                         <br />
                         <p><b>Description: </b>{idea.idea_desc}</p>
                         <br />
-                        <p><b>Categories: </b>{idea.categories}</p>
+                        <p><b>Category: </b>{idea.category}</p>
                         <br />
                         <p><b>Upvotes: </b>{idea.upvotes}</p>
 
