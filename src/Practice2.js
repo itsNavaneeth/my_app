@@ -7,7 +7,7 @@ import useFetch from "./useFetch";
 
 const Practice = () => {
     const { id } = useParams();
-    const { data: idea, isLoading, error } = useFetch('http://10.70.4.184:8080/api/v1/idea/getIdea');
+    const { data: idea, isLoading, error } = useFetch('http://10.70.4.74:8080/api/v1/idea/getIdea');
     return (
         <>
             <Box component="main" sx={{ p: 3 }}>
@@ -47,38 +47,51 @@ const Practice = () => {
                     dolores sunt inventore perferendis, aut sapiente modi nesciunt.
                 </Typography>
 
-                {
-                    idea && (
-                        <Box sx={{ mt: 3 }}>
-                            <Typography>
-                                ID: {idea.ideaId}
-                            </Typography>
 
-                            <Typography>
-                                Title: {idea.ideaTitle}
-                            </Typography>
+                {idea && (
 
-                            <Typography>
-                                Desc: {idea.ideaDescription}
-                            </Typography>
-
-                            <Typography>
-                                Upvotes: {idea.upvote}
-                            </Typography>
-
-                            <Typography>
-                                Shortlist: {idea.shortlist}
-                            </Typography>
-
-                            <Typography>
-                                Category: {idea.cat1}
-                            </Typography>
-                        </Box>
+                    <Box
+                        sx={{
+                            m: 4,
+                            display: 'flex',
+                            flexDirection: 'column',
+                            alignItems: 'start',
+                        }}
+                    >
+                        {/* <Typography variant="h5">
+        <b>Idea Name: </b>{idea.idea_name}
+    </Typography>
+    <Typography variant="h5">
+        <b>Description: </b>{idea.idea_desc}
+    </Typography>
+    <Typography variant="h5">
+        <b>Category: </b>{idea.category}
+    </Typography> */}
 
 
+                        <Typography variant="h5">
+                            <b>Idea ID: </b>{idea.ideaId}
+                        </Typography>
 
-                    )
-                }
+                        <Typography variant="h5">
+                            <b>Idea Name: </b>{idea.ideaTitle}
+                        </Typography>
+                        <Typography variant="h5">
+                            <b>Description: </b>{idea.ideaDescription}
+                        </Typography>
+                        <Typography variant="h5">
+                            <b>Category: </b>{idea.cat1}
+                        </Typography>
+                        <Typography variant="h5">
+                            <b>Upvotes: </b>{upvote2}
+                        </Typography>
+                        <Typography variant="h5">
+                            <b>Shortlist: </b>{shortlist2}
+                        </Typography>
+
+                    </Box>
+                )}
+
             </Box>
 
 

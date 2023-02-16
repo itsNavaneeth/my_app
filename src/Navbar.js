@@ -23,6 +23,7 @@ const drawerWidth = 240;
 const navItems = ['Idea Home', 'Submit Idea', '1st Idea', '404 Page'];
 //hashmap of navItems to store links
 const navLinks = new Map([
+    ['My Upvoted Ideas', '/my-upvoted-ideas'],
     ['Idea Home', '/ideas'],
     ['Submit Idea', '/submit'],
     ['1st Idea', '/ideas/1'],
