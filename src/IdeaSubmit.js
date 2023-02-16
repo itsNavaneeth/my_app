@@ -52,6 +52,8 @@ const IdeaSubmit = () => {
         e.preventDefault();
 
         // const idea = { team_name, idea_name, idea_desc, category, upvotes };
+        // const idea = { ideaTitle, ideaDescription, cat1, upvote: 0, shortlist: 0 }
+
 
         // fetch('http://localhost:8000/ideas', {
         //     method: 'POST',
@@ -64,8 +66,14 @@ const IdeaSubmit = () => {
         //     navigate('/ideas');
         // })
 
-        const idea = { ideaTitle: idea_name, ideaDescription: idea_desc, cat1: category, upvote: 0, shortlist: 0 }
-        axios.post('http://192.168.71.184:8080/api/v1/idea/addIdea', idea).then(() => {
+        const idea = {
+            ideaTitle: idea_name,
+            ideaDescription: idea_desc,
+            cat1: category,
+            upvote: 0,
+            shortlist: 0
+        }
+        axios.post('http://10.70.4.74:8080/api/v1/idea/addIdea', idea).then(() => {
             console.log("idea submission");
             navigate('/ideas');
 

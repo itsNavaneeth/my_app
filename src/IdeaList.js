@@ -13,12 +13,13 @@ const IdeaList = ({ ideas, title }) => {
                     <div className="blog-preview" key={idea.ideaId} >
                         <Link to={`/ideas/${idea.ideaId}`} >
 
-                            <IdeaList2 />
+                            {/* <IdeaList2 /> */}
 
-                            {/* <h2><b>Idea: </b>{idea.idea_name}</h2>
-                            <p><b>Description: </b>{idea.idea_desc}</p>
-                            <p><b>Categories: </b>{idea.category}</p>
-                            <p><b>Upvotes: </b>{idea.upvotes}</p> */}
+                            <h2><b>Idea: </b>{idea.ideaTitle}</h2>
+                            <p><b>Description: </b>{idea.ideaDescription}</p>
+                            <p><b>Category: </b>{idea.cat1}</p>
+                            <p><b>Upvotes: </b>{idea.upvote}</p>
+                            <p><b>Shortlist: </b>{idea.shortlist}</p>
 
 
                         </Link>

@@ -1,5 +1,5 @@
 import { BeachAccess, Bookmark, BookmarkBorder, Favorite, FavoriteBorder, Groups2, Home, LightbulbOutlined, LockOutlined, TipsAndUpdatesOutlined } from "@mui/icons-material";
-import { Avatar, Box, Button, Checkbox, Container, CssBaseline, Divider, FormControl, FormControlLabel, Grid, InputLabel, List, ListItem, ListItemAvatar, ListItemText, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
+import { Avatar, Box, Button, Card, CardActions, CardContent, CardHeader, Checkbox, Container, CssBaseline, Divider, FormControl, FormControlLabel, Grid, InputLabel, List, ListItem, ListItemAvatar, ListItemText, MenuItem, Paper, Select, TextField, Typography } from "@mui/material";
 import { deepOrange } from "@mui/material/colors";
 import { useParams } from "react-router-dom";
 import useFetch from "./useFetch";
@@ -39,46 +39,115 @@ function stringAvatar(name) {
 
 const IdeaDetails = () => {
     const { id } = useParams();
-    const { data: idea, isLoading, error } = useFetch('http://192.168.71.184:8080/api/v1/idea/' + id);
+    const { data: idea, isLoading, error } = useFetch('http://10.70.4.74:8080/api/v1/idea/' + id);
     const [userId, setUserId] = useState(3);
     const [shortlist2, setShortlist] = useState(0);
+    const [upvote2, setUpvote] = useState(0);
 
     const handleShortlist = (myid) => {
-
-        // setShortlist(idea.shortlist);
-
-        // const idea = { ideaTitle: idea_name, ideaDescription: idea_desc, cat1: category, upvote: 0, shortlist: 0 }
-
-
         axios
-            .post(`http://192.168.71.184:8080/api/v1/4/${myid}`).then((res) => {
+            .post(`http://10.70.4.74:8080/api/v1/4/${myid}`).then((res) => {
                 // console.log(res.data);
                 console.log("line 55");
             })
             .then(res => {
-                return axios.get('http://192.168.71.184:8080/api/v1/idea/' + id).then((res) => {
+                return axios.get('http://10.70.4.74:8080/api/v1/idea/' + id).then((res) => {
                     console.log("line 67");
                     // console.log("res.data.shortlist");
                     console.log(res.data.shortlist);
                     setShortlist(res.data.shortlist);
+                    alert(`${idea.ideaTitle} has been shortlisted`);
+                });
+            })
+    }
+
+    const removeShortlist = (myid) => {
+        axios
+            .post(`http://10.70.4.74:8080/api/v1/remove/4/${myid}`).then((res) => {
+                // console.log(res.data);
+                console.log("line 81");
+            })
+            .then(res => {
+                return axios.get('http://10.70.4.74:8080/api/v1/idea/' + id).then((res) => {
+                    console.log("line 67");
+                    // console.log("res.data.shortlist");
+                    console.log(res.data.shortlist);
+                    setShortlist(res.data.shortlist);
+                    alert(`${idea.ideaTitle} has been un shortlisted`);
+                });
+            })
+    }
+
+    const handleUpvote = (myid) => {
+
+        const upvoteobj = {
+            ideaId: id,
+            userId: myid,
+            useridea_id: 0
+        }
+
+        // axios.post('http://10.70.4.74:8080/api/v1/addUpvote', upvoteobj).then((res) => {
+        //     console.log("line 74");
+        //     // console.log("res.data.shortlist");
+        //     console.log(res.data.upvote);
+        //     setUpvote(res.data.upvote);
+        //     alert(`${idea.ideaTitle} has been upvoted`);
+        // });
+
+        axios
+            .post('http://10.70.4.74:8080/api/v1/addUpvote', upvoteobj).then((res) => {
+                // console.log(res.data);
+                console.log("line 55");
+            })
+            .then(res => {
+                return axios.get('http://10.70.4.74:8080/api/v1/idea/' + id).then((res) => {
+                    console.log("line 67");
+
+                    console.log(res.data.upvote);
+                    setUpvote(res.data.upvote);
+                    alert(`${idea.ideaTitle} has been upvoted`);
                 });
             })
 
+    }
 
+    const removeUpvote = (myid) => {
+
+        const upvoteobj = {
+            ideaId: id,
+            userId: myid,
+            useridea_id: 0
+        }
+
+        axios
+            .delete(`http://10.70.4.74:8080/api/v1/${myid}/${id}`).then((res) => {
+                // console.log(res.data);
+                console.log("line 55");
+            })
+            .then(res => {
+                return axios.get('http://10.70.4.74:8080/api/v1/idea/' + id).then((res) => {
+                    console.log("line 67");
+
+                    console.log(res.data.upvote);
+                    setUpvote(res.data.upvote);
+                    alert(`${idea.ideaTitle} has been un upvoted`);
+                });
+            })
 
     }
 
     useEffect(() => {
         const abortCont = new AbortController();
 
-        axios.get('http://192.168.71.184:8080/api/v1/admin').then((res) => {
+        axios.get('http://10.70.4.74:8080/api/v1/admin').then((res) => {
             console.log("admin");
             console.log(res.data);
         });
 
-        axios.get('http://192.168.71.184:8080/api/v1/idea/' + id).then((res) => {
+        axios.get('http://10.70.4.74:8080/api/v1/idea/' + id).then((res) => {
             console.log("line 85");
             setShortlist(res.data.shortlist);
+            setUpvote(res.data.upvote);
 
         });
 
@@ -93,52 +162,353 @@ const IdeaDetails = () => {
             <Grid container component="main" maxWidth="xl" sx={{ marginX: "auto", marginY: 5 }} height="80vh">
                 <CssBaseline />
 
+                {/* Hero unit */}
+                <Container disableGutters maxWidth="sm" component="main" sx={{ pt: 0, pb: 0 }}>
+                    <Typography
+                        component="h1"
+                        variant="h2"
+                        align="center"
+                        color="text.primary"
+                        gutterBottom
+                    >
+                        Idea Details
+                    </Typography>
+                </Container>
+                {/* End hero unit */}
+
                 <Grid item xs={12} sm={8} md={8} component={Paper} elevation={8} sx={{ borderRadius: 6, marginX: "auto" }}>
                     {error && <div>{error}</div>}
                     {isLoading && <p>Loading...</p>}
 
                     {idea && (
-
-                        <Box
-                            sx={{
-                                m: 4,
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'start',
-                            }}
-                        >
-                            {/* <Typography variant="h5">
-                                <b>Idea Name: </b>{idea.idea_name}
-                            </Typography>
-                            <Typography variant="h5">
-                                <b>Description: </b>{idea.idea_desc}
-                            </Typography>
-                            <Typography variant="h5">
-                                <b>Category: </b>{idea.category}
-                            </Typography> */}
+                        <>
+                            <Container maxWidth="lg" component="main">
+                                <Grid container spacing={5} alignItems="flex-start">
 
 
-                            <Typography variant="h5">
-                                <b>Idea ID: </b>{idea.ideaId}
-                            </Typography>
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        md={6}
+                                    >
+                                        <Card>
+                                            <CardHeader
+                                                title="Idea Name"
+                                                titleTypographyProps={{ align: 'center' }}
 
-                            <Typography variant="h5">
-                                <b>Idea Name: </b>{idea.ideaTitle}
-                            </Typography>
-                            <Typography variant="h5">
-                                <b>Description: </b>{idea.ideaDescription}
-                            </Typography>
-                            <Typography variant="h5">
-                                <b>Category: </b>{idea.cat1}
-                            </Typography>
-                            <Typography variant="h5">
-                                <b>Upvotes: </b>{idea.upvote}
-                            </Typography>
-                            <Typography variant="h5">
-                                <b>Shortlist: </b>{shortlist2}
-                            </Typography>
 
-                        </Box>
+                                                sx={{
+                                                    backgroundColor: (theme) =>
+                                                        theme.palette.mode === 'light'
+                                                            ? theme.palette.grey[200]
+                                                            : theme.palette.grey[700],
+                                                }}
+                                            />
+                                            <CardContent>
+                                                <Box
+                                                    sx={{
+                                                        display: 'flex',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'baseline',
+                                                        mb: 2,
+                                                    }}
+                                                >
+                                                    <Typography component="h2" variant="h3" color="text.primary">
+                                                        {idea.ideaTitle}
+                                                    </Typography>
+                                                </Box>
+                                            </CardContent>
+                                        </Card>
+                                    </Grid>
+
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        md={6}
+                                    >
+                                        <Card>
+                                            <CardHeader
+                                                title="Idea ID"
+                                                titleTypographyProps={{ align: 'center' }}
+
+
+                                                sx={{
+                                                    backgroundColor: (theme) =>
+                                                        theme.palette.mode === 'light'
+                                                            ? theme.palette.grey[200]
+                                                            : theme.palette.grey[700],
+                                                }}
+                                            />
+                                            <CardContent>
+                                                <Box
+                                                    sx={{
+                                                        display: 'flex',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'baseline',
+                                                        mb: 2,
+                                                    }}
+                                                >
+                                                    <Typography component="h2" variant="h3" color="text.primary">
+                                                        {idea.ideaId}
+                                                    </Typography>
+                                                </Box>
+                                            </CardContent>
+                                        </Card>
+                                    </Grid>
+
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        md={12}
+                                    >
+                                        <Card>
+                                            <CardHeader
+                                                title="Idea Description"
+                                                titleTypographyProps={{ align: 'center' }}
+
+
+                                                sx={{
+                                                    backgroundColor: (theme) =>
+                                                        theme.palette.mode === 'light'
+                                                            ? theme.palette.grey[200]
+                                                            : theme.palette.grey[700],
+                                                }}
+                                            />
+                                            <CardContent>
+                                                <Box
+                                                    sx={{
+                                                        display: 'flex',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'baseline',
+                                                        mb: 2,
+                                                    }}
+                                                >
+                                                    <Typography component="h4" variant="h5" color="text.secondary">
+                                                        {idea.ideaDescription}
+                                                    </Typography>
+                                                </Box>
+                                            </CardContent>
+                                        </Card>
+                                    </Grid>
+
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        md={6}
+                                    >
+                                        <Card>
+                                            <CardHeader
+                                                title="Idea Category"
+                                                titleTypographyProps={{ align: 'center' }}
+
+
+                                                sx={{
+                                                    backgroundColor: (theme) =>
+                                                        theme.palette.mode === 'light'
+                                                            ? theme.palette.grey[200]
+                                                            : theme.palette.grey[700],
+                                                }}
+                                            />
+                                            <CardContent>
+                                                <Box
+                                                    sx={{
+                                                        display: 'flex',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'baseline',
+                                                        mb: 2,
+                                                    }}
+                                                >
+                                                    <Typography component="h4" variant="h3" color="text.primary">
+                                                        {idea.cat1}
+                                                    </Typography>
+                                                </Box>
+                                            </CardContent>
+                                        </Card>
+                                    </Grid>
+
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        md={3}
+                                    >
+                                        <Card>
+                                            <CardHeader
+                                                title="Idea Upvotes"
+                                                titleTypographyProps={{ align: 'center' }}
+
+
+                                                sx={{
+                                                    backgroundColor: (theme) =>
+                                                        theme.palette.mode === 'light'
+                                                            ? theme.palette.grey[200]
+                                                            : theme.palette.grey[700],
+                                                }}
+                                            />
+                                            <CardContent>
+                                                <Box
+                                                    sx={{
+                                                        display: 'flex',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'baseline',
+                                                        mb: 2,
+                                                    }}
+                                                >
+                                                    <Box
+                                                        sx={{
+                                                            display: 'flex',
+                                                            flexWrap: 'wrap',
+                                                            flexDirection: 'row',
+                                                            alignItems: 'center',
+                                                            justifyContent: 'space-around',
+                                                            mt: 3
+                                                        }}
+                                                    >
+                                                        <Box>
+                                                            <Button onClick={() => handleShortlist(idea.ideaId)}>
+                                                                SL
+                                                            </Button>
+                                                        </Box>
+
+                                                        <Box>
+                                                            <Button onClick={() => removeShortlist(idea.ideaId)}>
+                                                                Rm SL
+                                                            </Button>
+                                                        </Box>
+
+                                                    </Box>
+                                                </Box>
+                                            </CardContent>
+                                        </Card>
+                                    </Grid>
+
+                                    <Grid
+                                        item
+                                        xs={12}
+                                        md={3}
+                                    >
+                                        <Card>
+                                            <CardHeader
+                                                title="Idea Shortlisted"
+                                                titleTypographyProps={{ align: 'center' }}
+
+
+                                                sx={{
+                                                    backgroundColor: (theme) =>
+                                                        theme.palette.mode === 'light'
+                                                            ? theme.palette.grey[200]
+                                                            : theme.palette.grey[700],
+                                                }}
+                                            />
+                                            <CardContent>
+                                                <Box
+                                                    sx={{
+                                                        display: 'flex',
+                                                        justifyContent: 'center',
+                                                        alignItems: 'baseline',
+                                                        mb: 2,
+                                                    }}
+                                                >
+                                                    <Box
+                                                        sx={{
+                                                            display: 'flex',
+                                                            flexWrap: 'wrap',
+                                                            flexDirection: 'row',
+                                                            alignItems: 'center',
+                                                            justifyContent: 'space-around',
+                                                            mt: 3
+                                                        }}
+                                                    >
+                                                        <Box>
+                                                            <Button onClick={() => handleUpvote(idea.ideaId)}>
+                                                                Uv
+                                                            </Button>
+                                                        </Box>
+
+                                                        <Box>
+                                                            <Button onClick={() => removeUpvote(idea.ideaId)}>
+                                                                Rm Uv
+                                                            </Button>
+                                                        </Box>
+
+
+                                                    </Box>
+                                                </Box>
+                                            </CardContent>
+                                        </Card>
+                                    </Grid>
+                                </Grid>
+                            </Container>
+                            {/* <Box
+                                sx={{
+                                    m: 4,
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'start',
+                                }}
+                            >
+                                <Typography variant="h5">
+                                    <b>Idea ID: </b>{idea.ideaId}
+                                </Typography>
+
+                                <Typography variant="h5">
+                                    <b>Idea Name: </b>{idea.ideaTitle}
+                                </Typography>
+                                <Typography variant="h5">
+                                    <b>Description: </b>{idea.ideaDescription}
+                                </Typography>
+                                <Typography variant="h5">
+                                    <b>Category: </b>{idea.cat1}
+                                </Typography>
+                                <Typography variant="h5">
+                                    <b>Upvotes: </b>{upvote2}
+                                </Typography>
+                                <Typography variant="h5">
+                                    <b>Shortlist: </b>{shortlist2}
+                                </Typography>
+
+                            </Box> */}
+
+
+
+                            <Grid container spacing={2}>
+                                <Grid item xs={6}>
+                                    {/* <Card>
+                                        <CardContent>
+                                            <Typography variant="h5" component="div">
+                                                ooooo
+                                            </Typography>
+                                            <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                                                adjective
+                                            </Typography>
+                                            <Typography variant="body2">
+                                                well meaning and kindly.
+                                                <br />
+                                                {'"a benevolent smile"'}
+                                            </Typography>
+                                        </CardContent>
+                                        <CardActions>
+                                            <Button size="small">Learn More</Button>
+                                        </CardActions>
+                                    </Card> */}
+                                </Grid>
+                                <Grid item xs={6}>
+
+                                </Grid>
+                                <Grid item xs={12}>
+
+                                </Grid>
+                                <Grid item xs={6}>
+
+                                </Grid>
+                                <Grid item xs={6}>
+
+                                </Grid>
+                            </Grid>
+
+
+
+
+                        </>
                     )}
 
                 </Grid>
@@ -233,7 +603,7 @@ const IdeaDetails = () => {
                                     mt: 3
                                 }}
                             >
-                                <Box
+                                {/* <Box
                                     sx={{
                                         display: 'flex',
                                         flexWrap: 'wrap',
@@ -267,13 +637,33 @@ const IdeaDetails = () => {
                                         size="medium"
                                     />
                                     <Typography>Yes</Typography>
-                                </Box>
+                                </Box> */}
 
                                 <Box>
                                     <Button onClick={() => handleShortlist(idea.ideaId)}>
-                                        Shortlist
+                                        SL
                                     </Button>
                                 </Box>
+
+                                <Box>
+                                    <Button onClick={() => removeShortlist(idea.ideaId)}>
+                                        Rm SL
+                                    </Button>
+                                </Box>
+
+                                <Box>
+                                    <Button onClick={() => handleUpvote(idea.ideaId)}>
+                                        Uv
+                                    </Button>
+                                </Box>
+
+                                <Box>
+                                    <Button onClick={() => removeUpvote(idea.ideaId)}>
+                                        Rm Uv
+                                    </Button>
+                                </Box>
+
+
                             </Box>
                         </Box>
                     </Box>
